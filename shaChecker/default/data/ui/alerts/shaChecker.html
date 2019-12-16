@@ -1,0 +1,37 @@
+
+<form class="form-horizontal form-complex">
+    <div class="control-group">
+        <label class="control-label" for="list_id">List Id</label>
+            <div class="controls">
+                <input type="text" name="action.shaChecker.param.listid" id="list_id" />
+                    <span class="help-block">
+                    The Name Of Sha Values
+                    </span>
+            </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="list_lang">Type Of Values </label>
+
+        <div class="controls">
+            <select id="list_lang" name="action.shaChecker.param.listlang">
+                <option value="">SHA256</option>
+                <option value="red">SHA128</option>
+                <option value="green">SHA512</option>
+                <option value="blue">MD5</option>
+                <option value="grey">SHA2048</option>
+            </select>
+            <span class="help-block">What Type Of Data</span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="api_key">API Key</label>
+            <div class="controls">
+                <input type="text" name="action.shaChecker.param.APIKey" id="api_key" />
+                    <span class="help-block">
+                    Api Key
+                    </span>
+            </div>
+    </div>  
+</form>

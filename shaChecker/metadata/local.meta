@@ -1,0 +1,36 @@
+[app/ui]
+version = 8.0.0
+modtime = 1576340997.019116000
+
+[app/launcher]
+version = 8.0.0
+modtime = 1576340997.020459000
+
+[lookups/first_seen_sha.csv]
+owner = admin
+access = read : [ * ], write : [ * ]
+export = system
+version = 8.0.0
+modtime = 1576427901.000208000
+
+[alert_actions/shaChecker]
+access = read : [ * ], write : [ * ]
+export = system
+owner = nobody
+version = 8.0.0
+modtime = 1576348917.159766000
+
+[props/processSha]
+owner = admin
+version = 8.0.0
+modtime = 1576421914.335894000
+
+[props/sourceoftype]
+owner = admin
+version = 8.0.0
+modtime = 1576435526.699512000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2Fsplunk%2Fetc%2Fapps%2FshaChecker%2Fbin%2Flogdosyasi.txt]
+owner = admin
+version = 8.0.0
+modtime = 1576435532.655609000
