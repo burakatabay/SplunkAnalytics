@@ -1,0 +1,52 @@
+[app/ui]
+version = 8.0.0
+modtime = 1576526778.709368000
+
+[app/launcher]
+version = 8.0.0
+modtime = 1576526778.710628000
+
+[savedsearches/First%20Time%20Seen%20Process%20Creation%20Event]
+access = read : [ * ], write : [ * ]
+export = system
+owner = admin
+version = 8.0.0
+modtime = 1576587002.234806000
+
+[lookups/previously_seen_sha_list.csv]
+access = read : [ * ], write : [ * ]
+export = system
+owner = nobody
+version = 8.0.0
+modtime = 1576586820.992034000
+
+[alert_actions/shaChecker]
+access = read : [ * ], write : [ * ]
+export = system
+owner = nobody
+version = 8.0.0
+modtime = 1576581123.206079000
+
+[props/iocdatabase]
+owner = admin
+version = 8.0.0
+modtime = 1576585773.066091000
+
+[indexes/test]
+owner = admin
+version = 8.0.0
+modtime = 1576585800.918518000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2Fsplunk%2Fetc%2Fapps%2FiocIntelligence%2Fbin%2Flogdosyasi.txt]
+owner = admin
+version = 8.0.0
+modtime = 1576585803.428774000
+
+[views/hash_analytics]
+owner = admin
+version = 8.0.0
+modtime = 1576620497.397245000
+
+[nav/default]
+version = 8.0.0
+modtime = 1576588112.680588000

@@ -1,0 +1,101 @@
+<form theme="dark">
+  <label>Hash ANALYTICS</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <title>Last Added SHA256 Count</title>
+        <search>
+          <query>index=test |stats dc(sha256)</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0x006d9c","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[0,1,4,8]</option>
+        <option name="underLabel">SHA256</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Last Clean SHA256</title>
+        <search>
+          <query>index=test positives=0 | stats dc(sha256)</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0x53a051","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[0,2,4,8]</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Last Malicious SHA</title>
+        <search>
+          <query>index=test positives!=0 | stats dc(sha256)</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xdc4e41","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[0,1,4,8]</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Last 24 Hours Seen Process</title>
+      <table>
+        <search>
+          <query>| inputlookup previously_seen_sha_list.csv 
+| eval start_time=relative_time(now(), "-16h") 
+| where _time &lt; start_time 
+| sort - _time 
+| fields - start_time</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Malicious SHA256</title>
+        <search>
+          <query>index=test positives!=0 | stats values(sha256) by positives</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+</form>
