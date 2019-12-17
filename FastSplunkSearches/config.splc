@@ -1,0 +1,2 @@
+1->eventtype => ms-sysmon-process=> event_id=7 => added
+2->Field alies => Computer === dest ==> (only event_id=7 AND SHA256=*)

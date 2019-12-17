@@ -1,0 +1,12 @@
+index=msexchange cs_method=POST cs_username!=- cs_username!=Anonymous cs_username!=healthmail* xforwardedfor!=10.* xforwardedfor!=127.* 
+| eval cs_username=lower(cs_username) 
+| eval yeniuser = replace(cs_username,"[here_is_your_domain]\\\\","") 
+| eval yeniuser = replace(yeniuser,"[here_is_your_domain]/","") 
+| eval yeniuser = replace(yeniuser,"[here_is_your_domain]\\\\","") 
+| eval yeniuser = replace(yeniuser,"[here_is_your_domain].com","") 
+| eval yeniuser = replace(yeniuser,"[here_is_your_domain].com\\\\","") 
+| stats dc(cs_uri_stem) as loginfo values(cs_uri_stem) as post_req by yeniuser xforwardedfor
+| search post_req=*auth*
+| where loginfo>3
+| iplocation xforwardedfor
+| search Country!=Turkey
