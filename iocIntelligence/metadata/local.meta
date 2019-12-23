@@ -11,14 +11,14 @@ access = read : [ * ], write : [ * ]
 export = system
 owner = admin
 version = 8.0.0
-modtime = 1576587002.234806000
+modtime = 1576765676.954844000
 
 [lookups/previously_seen_sha_list.csv]
 access = read : [ * ], write : [ * ]
 export = system
 owner = nobody
 version = 8.0.0
-modtime = 1576586820.992034000
+modtime = 1576845505.953814000
 
 [alert_actions/shaChecker]
 access = read : [ * ], write : [ * ]
@@ -45,8 +45,13 @@ modtime = 1576585803.428774000
 [views/hash_analytics]
 owner = admin
 version = 8.0.0
-modtime = 1576620497.397245000
+modtime = 1576845611.047866000
 
 [nav/default]
 version = 8.0.0
 modtime = 1576588112.680588000
+
+[indexes/wineventlog]
+owner = admin
+version = 8.0.0
+modtime = 1576629614.741372000

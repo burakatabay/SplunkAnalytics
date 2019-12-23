@@ -47,7 +47,7 @@ def main():
         event_result = payload.get("result")
         process_hash = event_result.get("process_hash")
         data = shaCheck(api_key, process_hash)
-        file = open("/opt/splunk/var/log/splunk/intelligence.txt", "a")
+        file = open("/opt/splunk/etc/apps/iocIntelligence/bin/logdosyasi.txt", "a")
         file.write(data)
         file.close()
 
