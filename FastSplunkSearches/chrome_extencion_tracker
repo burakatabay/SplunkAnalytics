@@ -1,0 +1,4 @@
+index=wineventlog process_name=chrome.exe file_name!=*Zone.Identifier EventCode=15 file_path="*Webstore Downloads*"
+| rex field=HASH "SHA256=(?<SHA256>.*)," 
+| table host process_name EventCode file_name file_path SHA256
+| dedup host process_name EventCode file_name file_path SHA256
