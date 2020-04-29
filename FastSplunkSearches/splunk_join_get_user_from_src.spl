@@ -1,0 +1,6 @@
+index=wineventlog (user=$username$) EventCode=4624 Logon_Type!=3 Source_Network_Address!=- 
+| stats count by _time user host Source_Network_Address Logon_Type 
+| rename user as admin ,Source_Network_Address as src
+| join  src
+    [ search index=fortinet  sourcetype=fgt_event dvc="$logon_dvc$" vendor_status=logon
+    | table user src]
