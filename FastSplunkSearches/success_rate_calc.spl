@@ -1,0 +1,4 @@
+index=picus shost="*" dhost="*" (outcome="Secure" OR outcome="InSecure" ) 
+| stats count(eval(match(outcome, "Secure"))) AS secure, count as total 
+| eval successRate=round((((secure/total)*100)),2)
+| fields + successRate
