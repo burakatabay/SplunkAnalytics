@@ -4,3 +4,11 @@ index=wineventlog (user=$username$) EventCode=4624 Logon_Type!=3 Source_Network_
 | join  src
     [ search index=fortinet  sourcetype=fgt_event dvc="$logon_dvc$" vendor_status=logon
     | table user src]
+
+
+    index=fortinet src=10.34.232.105 NOT dest IN (10.0.0.0/8 172.16.0.0/12 192.168.0.0/24 unknown) NOT hostname=* 
+    | stats count by user src dest host dvc action 
+    | join dest 
+        [ search index=cisco_ddi sourcetype=cisco:ddi:dns message_type=Response 
+        | rename answer as dest 
+        | table query, dest]
