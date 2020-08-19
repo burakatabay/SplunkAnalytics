@@ -1,1 +1,2 @@
-([^,]+)=([^,]*?)(#|,)
+key_value_split_comma = ([^,]+)=([^,]*?)(#|,)
+key_value_split_comma_include_user_agent = ([^\"=,]*)=(\".*?\"|[^,|#]*)
